@@ -44,20 +44,19 @@ def propagar(fosforos):
                 if fosforos[n] == 0:
                     fosforos[n] = 1
                 if fosforos[n] == -1:
-                    continue
+                    break
                 else:
                     continue
 
-            for n in range(i, len(fosforos), -1):
-                if fosforos[n] == 0:
+            for n in range(0, i, -1):
+                if fosforos[i - n] == 0:
                     fosforos[n] = 1
                 if fosforos[n] == -1:
-                    continue
+                    break
                 else:
                     continue
 
     return fosforos
-
 
 
 fosforos = [0, 0, 0, -1, 1, 0, 0, 0, -1, 0, 1, 0, 0]
@@ -66,6 +65,7 @@ fosforos_test = [0, 0, 0, -1, 1, 1, 1, 1, -1, 1, 1, 1, 1]
 resultado = propagar(fosforos)
 
 print(resultado)
+# assert resultado == fosforos_test, 'Todo mal'
 if resultado == fosforos_test:
     print('Salio bien papu')
 else:
@@ -73,10 +73,11 @@ else:
 
 
 fosforos = [1, 0, 0, -1, 1, 0, 0, 0, -1, 0, 1, 0, 0,-1, -1, 0, 0, 1, 1, 1, -1, 0, 1, -1, 0]
-fosforos_test = [1, 1, 1, -1, 1, 1, 1, 1, -1, 1, 1, 1, 1,-1, -1, 1, 1, 1, 1, 1, -1, 1, 1, -1, 0]
+fosforos_test = [1, 1, 1, -1, 1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, 1, -1, 0]
 
 resultado = propagar(fosforos)
 print(resultado)
+# assert resultado == fosforos_test, 'Todo mal'
 if resultado == fosforos_test:
     print('Salio bien papu2')
 else:

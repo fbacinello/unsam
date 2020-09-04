@@ -1,6 +1,6 @@
 import libreria_arboles
 
-path_archivo = 'arbolado-en-espacios-verdes.csv'
+path_archivo = './Data/arbolado-en-espacios-verdes.csv'
 parque_gralpaz = 'GENERAL PAZ'
 
 lista_arboles_gralpaz = libreria_arboles.leer_parque(path_archivo, parque_gralpaz)

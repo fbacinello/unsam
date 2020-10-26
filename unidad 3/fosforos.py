@@ -1,17 +1,3 @@
-def propagar(lista):
-    j = 0
-    for i in range(len(lista)):
-        if lista[i] == -1:
-            tramo = lista[j:i]
-            print(tramo)
-            if 1 in tramo:
-                for q in range(len(tramo)):
-                    tramo[q] = 1
-            print(tramo)
-            j = i + 1
-
-    print(lista)
-
 def propagar_str(lista):
     lista_str = [str(num) for num in lista]
     print(lista_str)
@@ -78,6 +64,59 @@ fosforos_test = [1, 1, 1, -1, 1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1,
 resultado = propagar(fosforos)
 print(resultado)
 # assert resultado == fosforos_test, 'Todo mal'
+if resultado == fosforos_test:
+    print('Salio bien papu2')
+else:
+    print('Cagaste fuego2')
+
+def propagar2(fosforos):
+    for i, e in enumerate(fosforos):
+        if e == 1:
+            # propago adelante
+            a = i
+            while True:
+                a += 1
+                if not a >= len(fosforos):
+                    if fosforos[a] == 0:
+                        fosforos[a] = 1
+                    if fosforos[a] == -1:
+                        break
+                else:
+                    break
+
+            # propago atras
+            b = i
+            while True:
+                b -= 1
+                if b >= 0:
+                    if fosforos[b] == 0:
+                        fosforos[b] = 1
+                    if fosforos[b] == -1:
+                        break
+                else:
+                    break
+    return fosforos
+
+
+fosforos = [0, 0, 0, -1, 1, 0, 0, 0, -1, 0, 1, 0, 0]
+fosforos_test = [0, 0, 0, -1, 1, 1, 1, 1, -1, 1, 1, 1, 1]
+# print(propagar_str(fosforos))
+resultado = propagar2(fosforos)
+
+print(resultado)
+# assert resultado == fosforos_test, 'To do mal'
+if resultado == fosforos_test:
+    print('Salio bien papu')
+else:
+    print('Cagaste fuego')
+
+
+fosforos = [1, 0, 0, -1, 1, 0, 0, 0, -1, 0, 1, 0, 0, -1, -1, 0, 0, 1, 1, 1, -1, 0, 1, -1, 0]
+fosforos_test = [1, 1, 1, -1, 1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, 1, -1, 0]
+
+resultado = propagar2(fosforos)
+print(resultado)
+# assert resultado == fosforos_test, 'To do mal'
 if resultado == fosforos_test:
     print('Salio bien papu2')
 else:
